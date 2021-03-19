@@ -1,12 +1,12 @@
 package colegiado;
 
-import java.util.Date;
+import java.util.Calendar;
 
 public class Pessoa {
 	private String nome;
-	private Date dataNascimento;
+	private Calendar dataNascimento;
 	
-	public Pessoa(String nome, Date dataNascimento) {
+	public Pessoa(String nome, Calendar dataNascimento) {
 		this.nome = nome;
 		this.dataNascimento = dataNascimento;
 	}

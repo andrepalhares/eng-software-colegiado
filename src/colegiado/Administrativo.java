@@ -1,5 +1,6 @@
 package colegiado;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Administrativo {
@@ -11,9 +12,11 @@ public class Administrativo {
 	public Administrativo(int codigo, String colegiado) {
 		this.codigo = codigo;
 		this.colegiado = colegiado;
+		this.cursos = new ArrayList<Curso>();
+		this.disciplinas = new ArrayList<Disciplina>();
 	}
 	
-	public void CriarCurso(int codigo, String nome, String colegiado, int quantidadeVagas, int cargaHoraria) {
+	public void criarCurso(int codigo, String nome, String colegiado, int quantidadeVagas, int cargaHoraria) {
 		if (this.cursos.stream().anyMatch(curso -> curso.getNome() == nome && curso.getCodigo() == codigo) == false) {
 			Curso curso = new Curso(codigo, nome, colegiado, quantidadeVagas, cargaHoraria);
 			
@@ -21,11 +24,11 @@ public class Administrativo {
 		}
 	}
 	
-	public void ExcluirCurso(int codigo) {
+	public void excluirCurso(int codigo) {
 		this.cursos.removeIf(curso -> curso.getCodigo() == codigo);
 	}
 	
-	public void CriarDisciplina(String codigo, String nome, int cargaHoraria, String preRequisitos, String programaDisciplina) {
+	public void criarDisciplina(String codigo, String nome, int cargaHoraria, String preRequisitos, String programaDisciplina) {
 		if (this.disciplinas.stream().anyMatch(disciplina -> disciplina.getNome() == nome && disciplina.getCodigo() == codigo) == false) {
 			Disciplina disciplina = new Disciplina(codigo, nome, cargaHoraria, preRequisitos, programaDisciplina);
 			
@@ -33,7 +36,28 @@ public class Administrativo {
 		}
 	}
 	
-	public void ExcluirDisciplina(String codigo) {
+	public void excluirDisciplina(String codigo) {
 		this.disciplinas.removeIf(disciplina -> disciplina.getCodigo() == codigo);
+	}
+	
+	public void adicionarAlunoATurma(Aluno aluno, Turma turma) {
+		aluno.adicionarTurma(turma);
+		turma.adicionarAluno(aluno);
+	}
+	
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
+	
+	public int getCodigo() {
+		return this.codigo;
+	}
+	
+	public void setColegiado(String colegiado) {
+		this.colegiado = colegiado;
+	}
+	
+	public String getColegiado() {
+		return this.colegiado;
 	}
 }
