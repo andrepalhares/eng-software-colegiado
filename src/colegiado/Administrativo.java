@@ -45,6 +45,11 @@ public class Administrativo {
 		turma.adicionarAluno(aluno);
 	}
 	
+	public void removerAlunoDaTurma(Aluno aluno, Turma turma) {
+		aluno.removerTurma(turma);
+		turma.removerAluno(aluno);
+	}
+	
 	public void setCodigo(int codigo) {
 		this.codigo = codigo;
 	}

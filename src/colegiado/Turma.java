@@ -17,6 +17,17 @@ public class Turma {
 	public void adicionarAluno(Aluno aluno) {
 		if (this.alunos.contains(aluno) == false) {
 			this.alunos.add(aluno);
+		} else {
+			System.out.println("Aluno já está matriculado a turma.");
+		}
+	}
+	
+	public Boolean removerAluno(Aluno aluno) {
+		if (this.alunos.contains(aluno)) {
+			return this.alunos.remove(aluno);
+		} else {
+			System.out.println("Aluno não está matriculado nesta turma.");
+			return false;
 		}
 	}
 	
@@ -26,5 +37,13 @@ public class Turma {
 	
 	public void setCodigo(String codigo) {
 		this.codigo = codigo;
+	}
+	
+	public Disciplina getDisciplina() {
+		return this.disciplina;
+	}
+	
+	public void setDisciplina(Disciplina disciplina) {
+		this.disciplina = disciplina;
 	}
 }
