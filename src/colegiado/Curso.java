@@ -36,7 +36,7 @@ public class Curso {
 	}
 	
 	public Boolean removerDisciplina(Disciplina disciplina) {
-		if (this.disciplinas.contains(disciplina) == false) {
+		if (this.disciplinas.contains(disciplina) == true) {
 			Boolean remove = this.disciplinas.remove(disciplina);
 			if(remove) {
 				System.out.println("Disciplina removida com sucesso.");
@@ -48,6 +48,11 @@ public class Curso {
 			System.out.println("Disciplina não existe");
 			return false;
 		}
+	}
+	
+	public Boolean removerDisciplinaLista(Disciplina disciplina) {
+		Boolean remove = this.disciplinas.remove(disciplina);
+		return remove;
 	}
 	
 	public String getNome() {
@@ -82,7 +87,7 @@ public class Curso {
 		this.quantidadeVagas = quantidadeVagas;
 	}
 	
-	public int gatCargaHoraria() {
+	public int getCargaHoraria() {
 		return this.cargaHoraria;
 	}
 	

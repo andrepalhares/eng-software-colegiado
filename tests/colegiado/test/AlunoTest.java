@@ -74,5 +74,47 @@ class AlunoTest {
 		
 		assertFalse(aluno.adicionarTurma(turma));
 	}
+	
+	@Test
+	public void testChecarAprovacaoNotaInsuficiente() {
+		aluno.adicionarFrequencia(Boolean.TRUE);
+		aluno.adicionarNotaParcial(21);
+		
+		boolean aprovado = aluno.checarAprovacao();
+		
+		assertFalse("Deveria retornar FALSE pois a nota é menor que 60", aprovado);
+	}
+	
+	@Test
+	public void testChecarAprovacaoFrequenciaInsuficiente() {
+		aluno.adicionarFrequencia(Boolean.FALSE);
+		aluno.adicionarFrequencia(Boolean.FALSE);
+		aluno.adicionarFrequencia(Boolean.TRUE);
+		aluno.adicionarNotaParcial(61);
+		
+		boolean aprovado = aluno.checarAprovacao();
+		
+		assertFalse("Deveria retornar FALSE pois a frequência é menor que 75%", aprovado);
+	}
+	
+	@Test
+	public void testChecarAprovacaoNotaEFrequenciaSuficientes() {
+		aluno.adicionarFrequencia(Boolean.FALSE);
+		aluno.adicionarFrequencia(Boolean.TRUE);
+		aluno.adicionarFrequencia(Boolean.TRUE);
+		aluno.adicionarFrequencia(Boolean.TRUE);
+		aluno.adicionarNotaParcial(60);
+		
+		boolean aprovado = aluno.checarAprovacao();
+		
+		assertTrue("Deveria retornar TRUE pois a frequência é menor que 75%", aprovado);
+	}
+	
+	@Test
+	public void testObterFrequenciaTotalInexistente() {
+		float frequencia = aluno.obterFrequenciaTotal();
+		
+		assertEquals(0, frequencia, 0);
+	}
 
 }

@@ -20,6 +20,7 @@ public class Aluno extends Pessoa {
 		this.curso = curso;
 		this.notasParciais = new ArrayList<Float>();
 		this.turmas = new HashSet<Turma>();
+		this.frequencia = new ArrayList<Boolean>();
 	}
 	
 	public boolean adicionarNotaParcial(float nota) {
@@ -43,7 +44,8 @@ public class Aluno extends Pessoa {
 	
 	public float obterFrequenciaTotal() {
 		if (!this.frequencia.isEmpty()) {
-			return this.frequencia.stream().filter(p -> p == true).count() / this.frequencia.size();			
+			return (float)this.frequencia.stream().filter(p -> p == Boolean.TRUE).count()
+					/ this.frequencia.size();			
 		} else {
 			return 0;
 		}

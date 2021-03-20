@@ -65,7 +65,7 @@ public class Professor extends Pessoa {
 	}
 	
 	private Boolean verificaSeTurmaJaEstaCadastrada(Turma turma) {
-		if(this.turmas.contains(turma) == false) {
+		if(this.turmas.contains(turma) == true) {
 			return true;
 		} else {
 			System.out.println("Turma já existe.");

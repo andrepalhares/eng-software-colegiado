@@ -24,11 +24,11 @@ class ProfessorTeste {
 
 	@Test
 	public void testVerificaSeRetornaTrueAoCriarNovaTurma() {
-	Disciplina disciplina = new Disciplina("codigo", "nome", 0, "pre", "prog");
-	List<Disciplina> disciplinas = new ArrayList<Disciplina>();
-	disciplinas.add(disciplina);
-	professor.setDisciplinas(disciplinas);
-	assertTrue("Deveria retornar true, já que está criando uma turma com disciplina válida e que ainda não existe", professor.criarTurma(disciplina, "cod"));
+		Disciplina disciplina = new Disciplina("codigo", "nome", 0, "pre", "prog");
+		List<Disciplina> disciplinas = new ArrayList<Disciplina>();
+		disciplinas.add(disciplina);
+		professor.setDisciplinas(disciplinas);
+		assertTrue("Deveria retornar true, já que está criando uma turma com disciplina válida e que ainda não existe", professor.criarTurma(disciplina, "cod"));
 	}
 	
 	@Test
@@ -67,6 +67,11 @@ class ProfessorTeste {
 		Disciplina disciplina = new Disciplina("codigo", "nome", 0, "pre", "prog");
 		Turma turma = new Turma("cod", disciplina);
 		assertFalse("Deveria retornar false, já que está tentando remover uma turma que não existe", professor.removerTurma(turma));
+	}
+	
+	@Test
+	public void testRemoverTurmaExistente() {
+		
 	}
 
 }

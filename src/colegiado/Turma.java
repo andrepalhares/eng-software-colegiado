@@ -46,4 +46,8 @@ public class Turma {
 	public void setDisciplina(Disciplina disciplina) {
 		this.disciplina = disciplina;
 	}
+	
+	public List<Aluno> getAlunos() {
+		return this.alunos;
+	}
 }

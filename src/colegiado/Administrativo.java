@@ -65,4 +65,12 @@ public class Administrativo {
 	public String getColegiado() {
 		return this.colegiado;
 	}
+	
+	public List<Disciplina> getDisciplinas() {
+		return this.disciplinas;
+	}
+	
+	public List<Curso> getCursos() {
+		return this.cursos;
+	}
 }
