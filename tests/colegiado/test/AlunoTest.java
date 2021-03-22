@@ -26,17 +26,17 @@ class AlunoTest {
 
 	@Test
 	public void testVerificaSeRetornaTrueAoAdicionarNotaCorreta() {
-		assertTrue("Deveria voltar true, já que nota está entre 0 e 100", aluno.adicionarNotaParcial(78));
+		assertTrue("Deveria voltar true, já que nota está entre 0 e 100", aluno.adicionarNotaParcial("prova 1", 78));
 	}
 	
 	@Test
 	public void testVerificaSeRetornaFalseAoAdicionarNotaMaiorQue100() {
-		assertFalse("Deveria voltar false, já que não dá para adicionar uma nota maior que 100", aluno.adicionarNotaParcial(150));
+		assertFalse("Deveria voltar false, já que não dá para adicionar uma nota maior que 100", aluno.adicionarNotaParcial("prova 2", 150));
 	}
 	
 	@Test
 	public void testVerificaSeRetornaFalseAoAdicionarNotaMenorQue0() {
-		assertFalse("Deveria voltar false, já que não dá para adicionar uma nota menor que 0", aluno.adicionarNotaParcial(-50));
+		assertFalse("Deveria voltar false, já que não dá para adicionar uma nota menor que 0", aluno.adicionarNotaParcial("prova 3", -50));
 	}
 	
 	@Test
@@ -78,7 +78,7 @@ class AlunoTest {
 	@Test
 	public void testChecarAprovacaoNotaInsuficiente() {
 		aluno.adicionarFrequencia(Boolean.TRUE);
-		aluno.adicionarNotaParcial(21);
+		aluno.adicionarNotaParcial("prova 3", 21);
 		
 		boolean aprovado = aluno.checarAprovacao();
 		
@@ -90,7 +90,7 @@ class AlunoTest {
 		aluno.adicionarFrequencia(Boolean.FALSE);
 		aluno.adicionarFrequencia(Boolean.FALSE);
 		aluno.adicionarFrequencia(Boolean.TRUE);
-		aluno.adicionarNotaParcial(61);
+		aluno.adicionarNotaParcial("trabalho prático 2", 61);
 		
 		boolean aprovado = aluno.checarAprovacao();
 		
@@ -103,7 +103,7 @@ class AlunoTest {
 		aluno.adicionarFrequencia(Boolean.TRUE);
 		aluno.adicionarFrequencia(Boolean.TRUE);
 		aluno.adicionarFrequencia(Boolean.TRUE);
-		aluno.adicionarNotaParcial(60);
+		aluno.adicionarNotaParcial("trabalho prático 1", 60);
 		
 		boolean aprovado = aluno.checarAprovacao();
 		

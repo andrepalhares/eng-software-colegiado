@@ -1,15 +1,17 @@
 package colegiado;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.HashSet;
 
 public class Aluno extends Pessoa {
 	private int matricula;
 	private Curso curso;
-	private List<Float> notasParciais;
+	private Map<String, Float> notasParciais;
 	private float notaFinal;
 	private List<Boolean> frequencia;
 	private Set<Turma> turmas;
@@ -18,14 +20,14 @@ public class Aluno extends Pessoa {
 		super(nome, dataNascimento);
 		this.matricula = matricula;
 		this.curso = curso;
-		this.notasParciais = new ArrayList<Float>();
+		this.notasParciais = new HashMap<String, Float>();
 		this.turmas = new HashSet<Turma>();
 		this.frequencia = new ArrayList<Boolean>();
 	}
 	
-	public boolean adicionarNotaParcial(float nota) {
+	public boolean adicionarNotaParcial(String atividade, float nota) {
 		if(nota >= 0 && nota <= 100) {
-			this.notasParciais.add(nota);
+			this.notasParciais.put(atividade, nota);
 			this.notaFinal += nota;
 			return true;
 		} else {
@@ -34,7 +36,7 @@ public class Aluno extends Pessoa {
 		}
 	}
 	
-	public List<Float> getNotasParciais() {
+	public Map<String, Float> getNotasParciais() {
 		return this.notasParciais;
 	}
 	
@@ -79,5 +81,9 @@ public class Aluno extends Pessoa {
 	
 	public Set<Turma> getTurmas() {
 		return this.turmas;
+	}
+	
+	public List<Boolean> getFrequencia() {
+		return this.frequencia;
 	}
 }

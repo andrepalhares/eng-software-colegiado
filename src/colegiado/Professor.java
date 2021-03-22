@@ -2,6 +2,7 @@ package colegiado;
 
 import java.util.Calendar;
 import java.util.List;
+import java.util.Map;
 
 public class Professor extends Pessoa {
 	private List<Disciplina> disciplinas;
@@ -71,5 +72,79 @@ public class Professor extends Pessoa {
 			System.out.println("Turma já existe.");
 			return false;
 		}
+	}
+	
+	public void inserirNota(Turma turma, Aluno aluno, String atividade, int nota) {
+		if (verificaSeTurmaEAlunoExistem(turma, aluno)) {
+			aluno.adicionarNotaParcial(atividade, nota);
+		}
+	}
+	
+	private Boolean verificaSeTurmaEAlunoExistem(Turma turma, Aluno aluno) {
+		if (this.turmas.contains(turma)) {
+			if(turma.getAlunos().contains(aluno)) {
+				return true;
+			} else {
+				System.out.println("Aluno não está nessa turma.");
+				return false;
+			}
+		} else {
+			System.out.println("Turma não existe.");
+			return false;
+		}
+	}
+	
+	public void inserirFrequencia(Turma turma, Aluno aluno, Boolean presenca) {
+		if (verificaSeTurmaEAlunoExistem(turma, aluno)) {
+			aluno.adicionarFrequencia(presenca);
+		}
+	}
+	
+	public void gerarRelatorio(String codigo, String tipo) {
+		Turma turma = acharTurmaPeloCodigo(codigo);
+		if(turma != null) {
+			if(tipo.equals("nota")) {
+				for(Aluno aluno : turma.getAlunos()) {
+					System.out.println(aluno.getNome() + ": \n");
+					imprimirNotasDoAluno(aluno);
+				}
+			} else if(tipo.equals("frequencia")) {
+				for(Aluno aluno : turma.getAlunos()) {
+					System.out.println(aluno.getNome() + ": \n");
+					imprimirFrequenciaDoAluno(aluno);
+				}
+			}
+		} else {
+			System.out.println("Turma não existe.");
+		}
+	}
+	
+	private void imprimirNotasDoAluno(Aluno aluno) {
+		Map<String, Float> notas = aluno.getNotasParciais();
+		Object[] atividades = notas.keySet().toArray();
+		for(int i = 0; i <= atividades.length; i++) {
+			System.out.println(atividades[i].toString() + ": " + notas.get(atividades[i].toString()) + "\n");
+		}
+	}
+	
+	private void imprimirFrequenciaDoAluno(Aluno aluno) {
+		List<Boolean> frequencia = aluno.getFrequencia();
+		for(Boolean freq : frequencia) {
+			if(freq) {
+				System.out.println("presente" + "\n");
+			} else {
+				System.out.println("ausente" + "\n");
+			}
+		}
+	}
+	
+	private Turma acharTurmaPeloCodigo(String codigo) {
+		for(Turma turma : this.turmas) {
+			if(turma.getCodigo() == codigo) {
+				return turma;
+			}
+		}
+		
+		return null;
 	}
 }
