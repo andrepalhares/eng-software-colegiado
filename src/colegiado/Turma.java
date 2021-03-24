@@ -17,6 +17,7 @@ public class Turma {
 	public void adicionarAluno(Aluno aluno) {
 		if (this.alunos.contains(aluno) == false) {
 			this.alunos.add(aluno);
+			System.out.println("Aluno matriculado com sucesso.");
 		} else {
 			System.out.println("Aluno já está matriculado a turma.");
 		}
@@ -24,6 +25,7 @@ public class Turma {
 	
 	public Boolean removerAluno(Aluno aluno) {
 		if (this.alunos.contains(aluno)) {
+			System.out.println("Aluno removido com sucesso.");
 			return this.alunos.remove(aluno);
 		} else {
 			System.out.println("Aluno não está matriculado nesta turma.");

@@ -40,7 +40,8 @@ public class Professor extends Pessoa {
 	}
 	
 	public Boolean removerTurma(Turma turma) {
-		if(this.turmas.contains(turma)) {
+		if(this.turmas.contains(turma) == true) {
+			System.out.println("Turma removida com sucesso.");
 			return this.turmas.remove(turma);
 		} else {
 			System.out.println("Turma não existe.");
@@ -57,7 +58,7 @@ public class Professor extends Pessoa {
 	}
 	
 	private Boolean verificaSeDisciplinaExiste(Disciplina disciplina) {
-		if(this.disciplinas.contains(disciplina)) {
+		if(this.disciplinas.contains(disciplina) == true) {
 			return true;
 		} else {
 			System.out.println("Disciplina não existe.");
@@ -74,11 +75,14 @@ public class Professor extends Pessoa {
 		}
 	}
 	
-	public void inserirNota(Turma turma, Aluno aluno, String atividade, int nota) {
+	public Boolean inserirNota(Turma turma, Aluno aluno, String atividade, int nota) {
 		if (verificaSeTurmaEAlunoExistem(turma, aluno)) {
 			aluno.adicionarNotaParcial(atividade, nota);
+			System.out.println("Nota inserida com sucesso.");
+			return true;
 		} else {
 			System.out.println("Turma e aluno não estão associados.");
+			return false;
 		}
 	}
 	

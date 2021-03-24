@@ -50,11 +50,6 @@ public class Curso {
 		}
 	}
 	
-	public Boolean removerDisciplinaLista(Disciplina disciplina) {
-		Boolean remove = this.disciplinas.remove(disciplina);
-		return remove;
-	}
-	
 	public String getNome() {
 		return this.nome;
 	}

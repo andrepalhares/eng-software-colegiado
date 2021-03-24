@@ -10,6 +10,8 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import colegiado.Aluno;
+import colegiado.Curso;
 import colegiado.Disciplina;
 import colegiado.Professor;
 import colegiado.Turma;
@@ -78,7 +80,27 @@ class ProfessorTeste {
 	}
 	
 	@Test
-	public void testRemoverTurmaExistente() {
+	public void testAdicionarNotaAUmAlunoQueEstaNaTurma() {
+		Disciplina disciplina = new Disciplina("codigo", "nome", 0, "pre", "prog");
+		Aluno aluno = new Aluno("nome", new GregorianCalendar(1999,7,26), 132123456, new Curso(0, "nome", "colegiado", 0, 0));
+		Turma turma = new Turma("cod", disciplina);
+		turma.adicionarAluno(aluno);
+		List<Turma> turmas = new ArrayList<Turma>();
+		turmas.add(turma);
+		professor.setTurmas(turmas);
 		
+		assertTrue("Deveria retornar true, já que o aluno está matriculado na truma", professor.inserirNota(turma, aluno, "prova 1", 15));
+	}
+	
+	@Test
+	public void testAdicionarNotaAUmAlunoQueNaoEstaNaTurma() {
+		Disciplina disciplina = new Disciplina("codigo", "nome", 0, "pre", "prog");
+		Aluno aluno = new Aluno("nome", new GregorianCalendar(1999,7,26), 132123456, new Curso(0, "nome", "colegiado", 0, 0));
+		Turma turma = new Turma("cod", disciplina);
+		List<Turma> turmas = new ArrayList<Turma>();
+		turmas.add(turma);
+		professor.setTurmas(turmas);
+		
+		assertFalse("Deveria retornar false, já que o aluno está matriculado na truma", professor.inserirNota(turma, aluno, "prova 1", 15));
 	}
 }
