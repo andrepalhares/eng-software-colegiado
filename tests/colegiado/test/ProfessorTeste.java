@@ -27,8 +27,11 @@ class ProfessorTeste {
 		Disciplina disciplina = new Disciplina("codigo", "nome", 0, "pre", "prog");
 		List<Disciplina> disciplinas = new ArrayList<Disciplina>();
 		disciplinas.add(disciplina);
+		
 		professor.setDisciplinas(disciplinas);
-		assertTrue("Deveria retornar true, já que está criando uma turma com disciplina válida e que ainda não existe", professor.criarTurma(disciplina, "cod"));
+		
+		assertTrue("Deveria retornar true, já que está criando uma turma com disciplina válida e que ainda não existe", 
+				professor.criarTurma(disciplina, "cod"));
 	}
 	
 	@Test
@@ -46,6 +49,7 @@ class ProfessorTeste {
 		Turma turma = new Turma("cod", disciplina);
 		List<Turma> turmas = new ArrayList<Turma>();
 		turmas.add(turma);
+		
 		professor.setTurmas(turmas);
 		assertFalse("Deveria retornar false, já que está tentando criar uma turma que já existe", professor.criarTurma(disciplina, "cod"));
 	}
@@ -57,8 +61,11 @@ class ProfessorTeste {
 		disciplinas.add(disciplina);
 		professor.setDisciplinas(disciplinas);
 		professor.criarTurma(disciplina, "cod");
+		
 		Turma turma = new Turma("cod", disciplina);
-		assertTrue("Deveria retornar true, já que está tentando remover uma turma existente", professor.removerTurma(turma));
+		
+		assertTrue("Deveria retornar true, já que está tentando remover uma turma existente", 
+				professor.removerTurma(turma));
 		
 	}
 	
@@ -66,7 +73,8 @@ class ProfessorTeste {
 	public void testVerificaSeRetornaFalseAoRemoverTurmaInexistente() {
 		Disciplina disciplina = new Disciplina("codigo", "nome", 0, "pre", "prog");
 		Turma turma = new Turma("cod", disciplina);
-		assertFalse("Deveria retornar false, já que está tentando remover uma turma que não existe", professor.removerTurma(turma));
+		assertFalse("Deveria retornar false, já que está tentando remover uma turma que não existe", 
+				professor.removerTurma(turma));
 	}
 	
 	@Test

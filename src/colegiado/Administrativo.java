@@ -26,11 +26,18 @@ public class Administrativo {
 			Curso curso = new Curso(codigo, nome, colegiado, quantidadeVagas, cargaHoraria);
 			
 			this.cursos.add(curso);
+			System.out.println("Curso criado com sucesso.");
+		} else {
+			System.out.println("Curso já existe.");			
 		}
 	}
 	
 	public void excluirCurso(int codigo) {
-		this.cursos.removeIf(curso -> curso.getCodigo() == codigo);
+		if (this.cursos.removeIf(curso -> curso.getCodigo() == codigo) == true) {
+			System.out.println("Curso excluído com sucesso.");
+		} else {
+			System.out.println("Não foi possível remover o curso. Tente novamente!");
+		}
 	}
 	
 	public Boolean editarCurso(int codigo, String nome, String colegiado, int quantidadeVagas, int cargaHoraria) {
@@ -58,7 +65,11 @@ public class Administrativo {
 	}
 	
 	public void excluirDisciplina(String codigo) {
-		this.disciplinas.removeIf(disciplina -> disciplina.getCodigo() == codigo);
+		if(this.disciplinas.removeIf(disciplina -> disciplina.getCodigo() == codigo) == true) {
+			System.out.println("Disciplina excluída com sucesso.");
+		} else {
+			System.out.println("Não foi possível remover a disciplina.");
+		}
 	}
 	
 	public Boolean editarDisciplina(String codigo, String nome, int cargaHoraria, String preRequisitos, String programaDisciplina) {
