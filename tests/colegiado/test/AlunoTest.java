@@ -21,17 +21,20 @@ class AlunoTest {
 	
 	@BeforeEach
 	public void before() {
-		aluno = new Aluno("nome", new GregorianCalendar(1999,7,26), 132123456, new Curso(0, "nome", "colegiado", 0, 0));
+		aluno = new Aluno("nome", new GregorianCalendar(1999,7,26), 132123456, 
+					new Curso(0, "nome", "colegiado", 0, 0));
 	}
 
 	@Test
 	public void testVerificaSeRetornaTrueAoAdicionarNotaCorreta() {
-		assertTrue("Deveria voltar true, já que nota está entre 0 e 100", aluno.adicionarNotaParcial("prova 1", 78));
+		assertTrue("Deveria voltar true, já que nota está entre 0 e 100", 
+				aluno.adicionarNotaParcial("prova 1", 78));
 	}
 	
 	@Test
 	public void testVerificaSeRetornaFalseAoAdicionarNotaMaiorQue100() {
-		assertFalse("Deveria voltar false, já que não dá para adicionar uma nota maior que 100", aluno.adicionarNotaParcial("prova 2", 150));
+		assertFalse("Deveria voltar false, já que não dá para adicionar uma nota maior que 100", 
+				aluno.adicionarNotaParcial("prova 2", 150));
 	}
 	
 	@Test

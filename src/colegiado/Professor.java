@@ -22,14 +22,6 @@ public class Professor extends Pessoa {
 		this.disciplinas = disciplinas;
 	}
 	
-	public List<Turma> getTurmas() {
-		return this.turmas;
-	}
-	
-	public void setTurmas(List<Turma> turmas) {
-		this.turmas = turmas;
-	}
-	
 	public Boolean criarTurma(Disciplina disciplina, String codigo) {
 		Turma turma = new Turma(codigo, disciplina);
 		if(verificaSeTurmaJaEstaCadastrada(turma)) {
@@ -56,6 +48,14 @@ public class Professor extends Pessoa {
 		}
 	}
 	
+	public List<Turma> getTurmas() {
+		return this.turmas;
+	}
+	
+	public void setTurmas(List<Turma> turmas) {
+		this.turmas = turmas;
+	}
+	
 	private Boolean verificaSeDisciplinaExiste(Disciplina disciplina) {
 		if(this.disciplinas.contains(disciplina)) {
 			return true;
@@ -77,6 +77,8 @@ public class Professor extends Pessoa {
 	public void inserirNota(Turma turma, Aluno aluno, String atividade, int nota) {
 		if (verificaSeTurmaEAlunoExistem(turma, aluno)) {
 			aluno.adicionarNotaParcial(atividade, nota);
+		} else {
+			System.out.println("Turma e aluno não estão associados.");
 		}
 	}
 	
@@ -97,6 +99,8 @@ public class Professor extends Pessoa {
 	public void inserirFrequencia(Turma turma, Aluno aluno, Boolean presenca) {
 		if (verificaSeTurmaEAlunoExistem(turma, aluno)) {
 			aluno.adicionarFrequencia(presenca);
+		} else {
+			System.out.println("Turma e aluno não estão associados.");
 		}
 	}
 	
