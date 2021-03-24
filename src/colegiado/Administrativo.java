@@ -86,20 +86,22 @@ public class Administrativo {
 	}
 	
 	public void cadastrarProfessor(String nome, Calendar dataNascimento, List<Disciplina> disciplinas, List<Turma> turmas) {
-		if (this.professores.stream().anyMatch(professor -> professor.getNome() == nome && professor.getDataNascimento() == dataNascimento) == false) {
+		if (this.professores.stream().anyMatch(professor -> professor.getNome() == nome) == false) {
 			Professor professor = new Professor(nome, dataNascimento, disciplinas, turmas);
 			
 			this.professores.add(professor);
+			System.out.println("Professor cadastrado com sucesso.");
 		} else {
 			System.out.println("Professor já existe.");
 		}
 	}
 	
 	public void registrarAluno(String nome, Calendar dataNascimento, int matricula, Curso curso) {
-		if (this.alunos.stream().anyMatch(aluno -> aluno.getNome() == nome && aluno.getDataNascimento() == dataNascimento) == false) {
+		if (this.alunos.stream().anyMatch(aluno -> aluno.getNome() == nome) == false) {
 			Aluno aluno = new Aluno(nome, dataNascimento, matricula, curso);
 			
 			this.alunos.add(aluno);
+			System.out.println("Aluno cadastrado com sucesso.");
 		} else {
 			System.out.println("Aluno já existe.");
 		}
@@ -127,5 +129,13 @@ public class Administrativo {
 	
 	public List<Curso> getCursos() {
 		return this.cursos;
+	}
+	
+	public List<Professor> getProfessores() {
+		return this.professores;
+	}
+	
+	public List<Aluno> getAlunos() {
+		return this.alunos;
 	}
 }
